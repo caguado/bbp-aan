@@ -1,0 +1,26 @@
+<version>
+	<file>
+		<physical_name>vboxwrapper_0.16_x86_64-apple-darwin__vbox64</physical_name>
+		<main_program/>
+	</file>
+	<file>
+		<physical_name>ucernvm.vmdk</physical_name>
+		<logical_name>vm_image.vdi</logical_name>
+		<copy_file/>
+		<gzip/>
+	</file>
+	<file>
+		<physical_name>cache.vmdk</physical_name>
+		<logical_name>vm_cache.vdi</logical_name>
+		<copy_file/>
+		<gzip/>
+	</file>
+	<file>
+		<physical_name>context.iso</physical_name>
+		<logical_name>vm_isocontext.iso</logical_name>
+		<copy_file/>
+		<gzip/>
+	</file>
+	<dont_throttle/>
+	<needs_network/>
+</version>
