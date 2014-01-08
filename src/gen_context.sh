@@ -14,7 +14,7 @@ plugins=cernvm
 
 [cernvm]
 organisations=None
-repositories=bbp
+repositories=bbp.epfl.ch
 shell=/bin/bash
 config_url=http://cernvm.cern.ch/config
 contextualization_command=bbpadmin:'/usr/bin/env >> /tmp/context'
