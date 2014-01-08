@@ -1,5 +1,7 @@
 #!/bin/bash
-UCVM_IMAGE=ucernvm-images.1.15-7.cernvm.x86_64
+UCVM_REPO="http://cernvm.cern.ch/releases"
+UCVM_DIR="ucernvm-images.1.15-7.cernvm.x86_64"
+UCVM_IMAGE="ucernvm-testing.1.15-7.cernvm.x86_64.hdd"
 
-wget http://cernvm.cern.ch/releases/${UCVM_IMAGE}/${UCVM_IMAGE}.hdd -O ${UCVM_IMAGE}.hdd
-qemu-img convert -O vmdk ${UCVM_IMAGE}.hdd cernvm_image.vmdk
+wget ${UCVM_REPO}/${UCVM_DIR}/${UCVM_IMAGE} -O ${UCVM_IMAGE}
+qemu-img convert -O vmdk ${UCVM_IMAGE} cernvm_image.vmdk
