@@ -7,19 +7,27 @@ cat <<EOF >$tmpdir.user_data
 . /etc/cernvm/site.conf
 #!/bin/bash
 
-env > /tmp/environment
+env > /tmp/.environment
+
+cat <<EOP1> /etc/cvmfs/config.d/bbp.epfl.ch.local
+CVMFS_HTTP_PROXY='DIRECT'
+CVMFS_CACHE_BASE='/var/lib/cvmfs'
+CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/opt/@org@'
+CVMFS_FORCE_SIGNING='yes'
+EOP1
+
 exit
+
 [amiconfig]
 plugins=cernvm
 
 [cernvm]
-organisations=None
-repositories=bbp.epfl.ch
+organisations=bbp
+repositories=bbp.epfl.ch,sft.cern.ch
 shell=/bin/bash
 config_url=http://cernvm.cern.ch/config
-contextualization_command=bbpadmin:'/usr/bin/env >> /tmp/context'
-services=copilot
 users=bbpaan:bbpaan:password
+contextualization_command=bbpaan:/cvmfs/bbp.epfl.ch/external/cernvm-copilot/bin/copilot-context
 edition=uCernVM
 
 [ucernvm-begin]
