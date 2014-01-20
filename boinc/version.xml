@@ -1,7 +1,8 @@
 <version>
 	<file>
-		<physical_name>vboxwrapper_0.16_x86_64-apple-darwin__vbox64</physical_name>
+		<physical_name>vboxwrapper_0.76_x86_64-pc-linux-gnu__vbox64</physical_name>
 		<main_program/>
+		<copy_file/>
 	</file>
 	<file>
 		<physical_name>ucernvm.vmdk</physical_name>
