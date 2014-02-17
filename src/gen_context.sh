@@ -31,7 +31,6 @@ contextualization_command=bbpaan:/cvmfs/bbp.epfl.ch/external/cernvm-copilot/bin/
 edition=uCernVM
 
 [ucernvm-begin]
-cvmfs_branch=cernvm-testing.cern.ch
 [ucernvm-end]
 EOF
 
