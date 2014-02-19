@@ -1,2 +1,7 @@
 #!/bin/bash
-vboxmanage createhd --filename cache.vmdk --size 8192 --format VMDK
+
+UCVM_SIZE=16384
+UCVM_CACHE=cache.vdi
+
+vboxmanage createhd --filename ${UCVM_CACHE} --size ${UCVM_SIZE} --format VDI
+chmod 0644 ${UCVM_CACHE}
