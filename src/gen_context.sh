@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CONTEXT_FILE="${1:-context.iso}"
+
 tmpdir=`mktemp -dp /tmp`
 
 cat <<EOF >$tmpdir.user_data
@@ -42,6 +44,7 @@ EC2_USER_DATA="$user_data64"
 ONE_CONTEXT_PATH="/var/lib/amiconfig"
 EOF
 
-touch $tmpdir/prolog.sh
+touch ${tmpdir}/prolog.sh
 
-mkisofs -o context.iso $tmpdir
+mkisofs -o ${CONTEXT_FILE} ${tmpdir}
+rm -rf ${tmpdir}
