@@ -13,7 +13,7 @@ env > /tmp/.environment
 
 cat <<EOP1> /etc/cvmfs/config.d/bbp.epfl.ch.conf
 CVMFS_CACHE_BASE='/var/lib/cvmfs'
-CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/cvmfs/bbp.epfl.ch'
+CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/cvmfs/bbp.epfl.ch;http://cvmfs.racf.bnl.gov/cvmfs/bbp.epfl.ch'
 CVMFS_FORCE_SIGNING='yes'
 EOP1
 
