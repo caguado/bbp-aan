@@ -11,10 +11,9 @@ cat <<EOF >$tmpdir.user_data
 
 env > /tmp/.environment
 
-cat <<EOP1> /etc/cvmfs/config.d/bbp.epfl.ch.local
-CVMFS_HTTP_PROXY='DIRECT'
+cat <<EOP1> /etc/cvmfs/config.d/bbp.epfl.ch.conf
 CVMFS_CACHE_BASE='/var/lib/cvmfs'
-CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/opt/@org@'
+CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/cvmfs/bbp.epfl.ch'
 CVMFS_FORCE_SIGNING='yes'
 EOP1
 
@@ -25,7 +24,7 @@ plugins=cernvm
 
 [cernvm]
 organisations=bbp
-repositories=bbp.epfl.ch,sft.cern.ch
+repositories=bbp.epfl.ch
 shell=/bin/bash
 config_url=http://cernvm.cern.ch/config
 users=bbpaan:bbpaan:password
