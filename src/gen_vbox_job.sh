@@ -2,7 +2,7 @@
 
 VBOXJOB_FILE="${1:-vbox_job.xml}"
 
-cat <<EOF >${VBOXJOB_FILE}
+cat <<EOF >"${VBOXJOB_FILE}"
 <vbox_job>
   <os_name>Linux26_64</os_name>
   <memory_size_mb>512</memory_size_mb>

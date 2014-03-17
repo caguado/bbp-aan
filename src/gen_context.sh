@@ -45,5 +45,5 @@ EOF
 
 touch ${tmpdir}/prolog.sh
 
-mkisofs -o ${CONTEXT_FILE} ${tmpdir}
+mkisofs -o "${CONTEXT_FILE}" ${tmpdir}
 rm -rf ${tmpdir}

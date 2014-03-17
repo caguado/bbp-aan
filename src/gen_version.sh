@@ -6,7 +6,7 @@ UCVM_FILE="${3:-ucernvm.vdi}"
 CACHE_FILE="${4:-cache.vdi}"
 CONTEXT_FILE="${5:-context.iso}"
 
-cat <<EOF >${VERSION_FILE}
+cat <<EOF >"${VERSION_FILE}"
 <version>
   <file>
     <physical_name>${WRAPPER_FILE}</physical_name>
