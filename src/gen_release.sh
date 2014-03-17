@@ -2,7 +2,7 @@
 
 # Versions
 WRAPPER_VERSION="7.0.79-1.aan"
-UCVM_VERSION="1.17-3"
+UCVM_VERSION="1.17-5"
 BBPAAN_VERSION=`git describe`
 
 BASE=`dirname $PWD/$0`
