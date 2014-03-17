@@ -47,3 +47,4 @@ touch ${tmpdir}/prolog.sh
 
 mkisofs -o "${CONTEXT_FILE}" ${tmpdir}
 rm -rf ${tmpdir}
+rm -rf ${tmpdir}.user_data
