@@ -4,47 +4,37 @@ CONTEXT_FILE="${1:-context.iso}"
 
 tmpdir=`mktemp -dp /tmp`
 
-cat <<EOF >$tmpdir.user_data
-#!/bin/sh
-. /etc/cernvm/site.conf
-#!/bin/bash
+# Do not expand variables now
+cat <<"EOF" >$tmpdir/user-data
+#cloud-config
+groups:
+  - bbpaan
 
-env > /tmp/.environment
+users:
+  - name: bbpaan
+    gecos: bbpaan
+    primary-group: bbpaan
+    groups: floppy
+    shell: /bin/bash
+    lock-passwd: false
+    passwd: $6$iTiV01SuiVlHnOpE$SFfpklqm/jV2RWmDkrf33qq8QaBFHMimgNArbMHG1g6jit1ISpIDKJDhCtF8oy8NwDVUVUbRIFTUnanVcFNQO0
 
-cat <<EOP1> /etc/cvmfs/config.d/bbp.epfl.ch.conf
-CVMFS_CACHE_BASE='/var/lib/cvmfs'
-CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/cvmfs/bbp.epfl.ch;http://cvmfs.racf.bnl.gov/cvmfs/bbp.epfl.ch'
-CVMFS_FORCE_SIGNING='yes'
-EOP1
+write_files:
+  - owner: root:root
+    path: /etc/cvmfs/config.d/bbp.epfl.ch.conf
+    permissions: '0644'
+    content: |
+      CVMFS_CACHE_BASE='/var/lib/cvmfs'
+      CVMFS_SERVER_URL='http://cvmfs-stratum-one.cern.ch/cvmfs/bbp.epfl.ch;http://cvmfs.racf.bnl.gov/cvmfs/bbp.epfl.ch'
+      CVMFS_FORCE_SIGNING='yes'
 
-exit
+runcmd:
+  - su - bbpaan -c /cvmfs/bbp.epfl.ch/external/cernvm-copilot/bin/copilot-context &
 
-[amiconfig]
-plugins=cernvm
-
-[cernvm]
-organisations=bbp
-repositories=bbp.epfl.ch
-shell=/bin/bash
-config_url=http://cernvm.cern.ch/config
-users=bbpaan:bbpaan:password
-contextualization_command=bbpaan:/cvmfs/bbp.epfl.ch/external/cernvm-copilot/bin/copilot-context
-edition=uCernVM
-
-[ucernvm-begin]
-[ucernvm-end]
 EOF
 
-user_data64=`base64 --wrap=0 $tmpdir.user_data`
-
-cat <<EOF >$tmpdir/context.sh
-# Context variables used by amiconfig
-EC2_USER_DATA="$user_data64"
-ONE_CONTEXT_PATH="/var/lib/amiconfig"
+cat <<"EOF" >$tmpdir/meta-data
 EOF
 
-touch ${tmpdir}/prolog.sh
-
-mkisofs -o "${CONTEXT_FILE}" ${tmpdir}
+genisoimage  -output "${CONTEXT_FILE}" -volid cidata -joliet -rock $tmpdir/user-data $tmpdir/meta-data
 rm -rf ${tmpdir}
-rm -rf ${tmpdir}.user_data
