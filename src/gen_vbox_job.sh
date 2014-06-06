@@ -14,7 +14,7 @@ cat <<EOF >"${VBOXJOB_FILE}"
   <enable_isocontextualization/>
   <enable_remotedesktop/>
   <enable_cern_dataformat/>
-  <job_duration>86400</job_duration>
+  <job_duration>21600</job_duration>
   <pf_guest_port>80</pf_guest_port>
   <pf_host_port>7859</pf_host_port>
 </vbox_job>
