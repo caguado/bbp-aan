@@ -17,7 +17,7 @@ users:
     groups: floppy
     shell: /bin/bash
     lock-passwd: false
-    passwd: $6$iTiV01SuiVlHnOpE$SFfpklqm/jV2RWmDkrf33qq8QaBFHMimgNArbMHG1g6jit1ISpIDKJDhCtF8oy8NwDVUVUbRIFTUnanVcFNQO0
+    passwd: $6$PuVRHFb7$6S3385gZELg5HvKUCYEt9L7Y7UvqEWLLb3bGwsnNAR2iyAJCQZAv6f4.c97jmCAAPSWeyFBE7L9EoHPeqIO.S.
 
 write_files:
   - owner: root:root
